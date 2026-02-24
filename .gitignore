@@ -1,0 +1,38 @@
+# Maven
+/target/
+
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# VS Code
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración
+src/main/resources/application.properties
+
+# Logs
+*.log
+
+# Otros
+*.swp
+
+# Excluir archivos de pruebas temporales
+*.tmp
+
+# Excluir dependencias
+/node_modules/
+
+# Excluir archivos de build
+/build/
+
