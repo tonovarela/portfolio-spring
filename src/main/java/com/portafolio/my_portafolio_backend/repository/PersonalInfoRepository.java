@@ -15,9 +15,10 @@ import java.util.Optional;
 
 @Repository
 
-public class PersonalInfoRepository implements  IPersonalInfoRepository {
+public class PersonalInfoRepository implements  IPersonalInfoRepository  {
 
-    private  final JdbcTemplate jdbcTemplate;
+  private  final JdbcTemplate jdbcTemplate;
+
     private final RowMapper<PersonalInfo> personalInfoRowMapper = (rs, rowNum) -> {;
         PersonalInfo personalInfo = new PersonalInfo();
         personalInfo.setId(rs.getLong("id"));
@@ -37,6 +38,7 @@ public class PersonalInfoRepository implements  IPersonalInfoRepository {
     public PersonalInfoRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
 
     @Override
     public PersonalInfo save(PersonalInfo personalInfo) {
@@ -100,4 +102,6 @@ public class PersonalInfoRepository implements  IPersonalInfoRepository {
         String sql="delete from personal_info where id=?";
         jdbcTemplate.update(sql,id);
     }
+
+
 }
