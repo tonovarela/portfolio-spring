@@ -17,21 +17,22 @@ public class SkillService implements  ISkillService {
 
     @Override
     public Skill save(Skill skill) {
-        return null;
+        return skillRepository.save(skill);
     }
 
     @Override
     public Optional<Skill> findById(Long id) {
-        return Optional.empty();
+        return skillRepository.findById(id);
     }
 
     @Override
     public List<Skill> findAll() {
+
         return skillRepository.findAll();
     }
 
     @Override
     public void deleteById(Long id) {
-
+        skillRepository.deleteById(id);
     }
 }
