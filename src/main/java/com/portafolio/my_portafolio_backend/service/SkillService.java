@@ -17,6 +17,9 @@ public class SkillService implements  ISkillService {
 
     @Override
     public Skill save(Skill skill) {
+        if (skill.getLevelPercentage()>100 || skill.getLevelPercentage()<0){
+            throw new IllegalArgumentException("El porcentaje de nivel debe estar entre 0 y 100");
+        }
         return skillRepository.save(skill);
     }
 

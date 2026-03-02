@@ -1,7 +1,6 @@
 package com.portafolio.my_portafolio_backend.repository;
 
 
-import com.portafolio.my_portafolio_backend.model.PersonalInfo;
 import com.portafolio.my_portafolio_backend.model.Skill;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
