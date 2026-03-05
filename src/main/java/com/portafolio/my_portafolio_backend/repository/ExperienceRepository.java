@@ -1,6 +1,7 @@
 package com.portafolio.my_portafolio_backend.repository;
 
 import com.portafolio.my_portafolio_backend.model.Experience;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -61,8 +62,13 @@ public class ExperienceRepository implements IExperienceRepository {
 
     @Override
     public Optional<Experience> findById(Long id) {
-        String sql = "SELECT * FROM experiences WHERE id=?";
-        return Optional.ofNullable(jdbcTemplate.queryForObject(sql, experienceRowMapper, id));
+        String sql= "SELECT * FROM experiences WHERE id=?";
+        try {
+            return Optional.ofNullable(jdbcTemplate.queryForObject(sql, experienceRowMapper, id));
+        }
+        catch (EmptyResultDataAccessException ex){
+            return Optional.empty();
+        }
     }
 
     @Override

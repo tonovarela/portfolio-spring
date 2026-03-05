@@ -23,13 +23,12 @@ public class ExperienceController {
     }
 
     @GetMapping("/id/{id}")
-    public Experience getById(@PathVariable Long id) {
+    public ResponseEntity<Experience> getById(@PathVariable Long id) {
         Optional<Experience> experience = experienceService.findById(id);
         if (experience.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Experience not found with id: " + id);
-
         }
-        return experience.get();
+        return new ResponseEntity<>(experience.get(), HttpStatus.OK);
     }
 
     @GetMapping("/all")

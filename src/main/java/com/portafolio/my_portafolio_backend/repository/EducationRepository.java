@@ -42,7 +42,7 @@ public class EducationRepository  implements  IEducationRepository{
     public Education save(Education education) {
             if (education.getId()==null){
                 KeyHolder keyHolder = new GeneratedKeyHolder();
-                String sql = "INSERT INTO education (degree, institution, start_date, end_date, description, personal_info_id) VALUES (?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO educations (degree, institution, start_date, end_date, description, personal_info_id) VALUES (?, ?, ?, ?, ?, ?)";
                 jdbcTemplate.update(connection -> {
                     var ps = connection.prepareStatement(sql, new String[]{"id"});
                     ps.setString(1, education.getDegree());
@@ -59,7 +59,7 @@ public class EducationRepository  implements  IEducationRepository{
                 }, keyHolder);
                 education.setId(Objects.requireNonNull(keyHolder.getKey()).longValue());
             }else {
-                String sql = "UPDATE education SET degree=?, institution=?, start_date=?, end_date=?, description=?, personal_info_id=? WHERE id=?";
+                String sql = "UPDATE educations SET degree=?, institution=?, start_date=?, end_date=?, description=?, personal_info_id=? WHERE id=?";
                 jdbcTemplate.update(sql, education.getDegree(), education.getInstitution(), java.sql.Date.valueOf(education.getStartDate()), education.getEndDate() != null ? java.sql.Date.valueOf(education.getEndDate()) : null, education.getDescription(), education.getPersonalInfoId(), education.getId());
             }
 
@@ -69,7 +69,7 @@ public class EducationRepository  implements  IEducationRepository{
 
     @Override
     public Optional<Education> findById(Long id) {
-        String sql= "SELECT * FROM education WHERE id=?";
+        String sql= "SELECT * FROM educations WHERE id=?";
         try {
             return Optional.ofNullable(jdbcTemplate.queryForObject(sql, educationRowMapper, id));
         }
@@ -80,14 +80,14 @@ public class EducationRepository  implements  IEducationRepository{
 
     @Override
     public List<Education> findAll() {
-        String sql = "SELECT * FROM education";
+        String sql = "SELECT * FROM educations";
         return jdbcTemplate.query(sql, educationRowMapper);
     }
 
     @Override
     public void deleteById(Long id) {
 
-        String sql = "DELETE FROM education WHERE id=?";
+        String sql = "DELETE FROM educations WHERE id=?";
         jdbcTemplate.update(sql, id);
 
     }
