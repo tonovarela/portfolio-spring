@@ -1,10 +1,7 @@
 package com.portafolio.my_portafolio_backend.rest;
 
 import com.portafolio.my_portafolio_backend.model.PersonalInfo;
-import com.portafolio.my_portafolio_backend.model.Skill;
-import com.portafolio.my_portafolio_backend.repository.IPersonalInfoRepository;
 import com.portafolio.my_portafolio_backend.service.IPersonalInfoService;
-import com.portafolio.my_portafolio_backend.service.ISkillService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/test-personal-info")
-public class PersonalInfoTestController {
+@RequestMapping("/api/personal-info")
+public class PersonalInfoController {
     private final IPersonalInfoService personalInfoService;
 
-    public PersonalInfoTestController(IPersonalInfoService personalInfoService) {
+    public PersonalInfoController(IPersonalInfoService personalInfoService) {
         this.personalInfoService = personalInfoService;
     }
 
