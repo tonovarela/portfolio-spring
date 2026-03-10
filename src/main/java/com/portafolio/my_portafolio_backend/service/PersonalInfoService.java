@@ -1,5 +1,6 @@
 package com.portafolio.my_portafolio_backend.service;
 
+import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.model.PersonalInfo;
 import com.portafolio.my_portafolio_backend.repository.IPersonalInfoRepository;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class PersonalInfoService implements  IPersonalInfoService {
 
         if (result.hasErrors()){
             System.out.println("Validation errors: " + result.getAllErrors());
-             throw new IllegalArgumentException("Invalid PersonalInfo data: " + result.getAllErrors());
+            throw new ValidationException(result);
         }
         return personalInfoRepository.save(personalInfo);
     }
