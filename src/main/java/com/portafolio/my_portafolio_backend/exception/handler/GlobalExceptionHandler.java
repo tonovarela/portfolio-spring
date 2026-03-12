@@ -1,10 +1,9 @@
 package com.portafolio.my_portafolio_backend.exception.handler;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
-import com.portafolio.my_portafolio_backend.models.ErrorResponse;
+import com.portafolio.my_portafolio_backend.clases.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,31 +14,35 @@ import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
     @ExceptionHandler(ValidationException.class)
-    public ResponseEntity<ErrorResponse> handleValidationException(ValidationException ex, Model model) {
+    public ResponseEntity<ErrorResponse> handleValidationException(ValidationException ex) {
         List<String> errors = ex
                 .getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .map(this::formatFieldError)
                 .toList();
-        return ResponseEntity
-                .badRequest()
-                .body(new ErrorResponse(
+
+        return new ResponseEntity<>(
+                new ErrorResponse(
                         HttpStatus.BAD_REQUEST.value(),
                         "Error de validación",
                         errors,
                         LocalDateTime.now()
-                ));
+                ),
+                HttpStatus.BAD_REQUEST
+        );
+
     }
 
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
-        List<String> errors = ex.getBindingResult()
+        List<String> errors = ex
                 .getFieldErrors()
                 .stream()
-                .map(FieldError::getDefaultMessage)
+                .map(this::formatFieldError)
                 .toList();
 
         return ResponseEntity
@@ -60,9 +63,21 @@ public class GlobalExceptionHandler {
                 .body(new ErrorResponse(
                         HttpStatus.INTERNAL_SERVER_ERROR.value(),
                         "Error interno del servidor",
-                        List.of(ex.getMessage()),
+                        List.of(nonNullMessage(ex.getMessage(), "Error no especificado")),
                         LocalDateTime.now()
                 ));
+    }
+
+
+    private String formatFieldError(FieldError error) {
+        return error.getField() + ": " + nonNullMessage(error.getDefaultMessage(), "Valor inválido");
+    }
+
+    private String nonNullMessage(String message, String fallback) {
+        if (message == null || message.isBlank()) {
+            return fallback;
+        }
+        return message;
     }
 
 
