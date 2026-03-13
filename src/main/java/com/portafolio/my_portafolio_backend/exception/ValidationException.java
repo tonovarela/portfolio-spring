@@ -6,10 +6,9 @@ import org.springframework.validation.BindingResult;
 @Getter
 public class ValidationException extends RuntimeException {
     private final BindingResult bindingResult;
-    public ValidationException(BindingResult bindingResult) {
-        this.bindingResult = bindingResult;
-        String message = "Validation failed: " + bindingResult.getErrorCount();
-        super(message);
 
+    public ValidationException(BindingResult bindingResult) {
+        super("Validation failed: " + bindingResult.getErrorCount());
+        this.bindingResult = bindingResult;
     }
 }

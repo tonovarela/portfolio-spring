@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario</title>
+</head>
+<body>
+
+<h1>Formulario de informacion personal</h1>
+<form th:action="@{/personal-info-save}" th:object="${personalInfo}" method="post">
+    <label for="firstName">Nombre:</label><br>
+    <input id="firstName" type="text" th:field="*{firstName}"><br><br>
+
+    <label for="lastName">Apellido:</label><br>
+    <input id="lastName" type="text" th:field="*{lastName}"><br><br>
+
+    <label for="title">Titulo:</label><br>
+    <input id="title" type="text" th:field="*{title}"><br><br>
+
+    <label for="profileDescription">Descripcion de perfil:</label><br>
+    <textarea id="profileDescription" th:field="*{profileDescription}"></textarea><br><br>
+
+    <label for="profileImageUrl">URL imagen:</label><br>
+    <input id="profileImageUrl" type="text" th:field="*{profileImageUrl}"><br><br>
+
+    <label for="yearsOfExperience">Anos de experiencia:</label><br>
+    <input id="yearsOfExperience" type="number" min="0" max="50" th:field="*{yearsOfExperience}"><br><br>
+
+    <label for="email">Correo electronico:</label><br>
+    <input id="email" type="email" th:field="*{email}"><br><br>
+
+    <label for="phone">Telefono:</label><br>
+    <input id="phone" type="text" th:field="*{phone}"><br><br>
+
+    <label for="linkedinUrl">LinkedIn:</label><br>
+    <input id="linkedinUrl" type="url" th:field="*{linkedinUrl}"><br><br>
+
+    <label for="githubUrl">GitHub:</label><br>
+    <input id="githubUrl" type="url" th:field="*{githubUrl}"><br><br>
+
+    <button type="submit">Enviar</button>
+</form>
+
+</body>
+</html>
+
