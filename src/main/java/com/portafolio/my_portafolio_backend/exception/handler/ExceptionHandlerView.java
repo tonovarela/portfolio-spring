@@ -1,7 +1,6 @@
 package com.portafolio.my_portafolio_backend.exception.handler;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 
-@ControllerAdvice(annotations = Controller.class)
+@ControllerAdvice(basePackages = "com.portafolio.my_portafolio_backend.controller")
 public class ExceptionHandlerView {
 
     @ExceptionHandler(ValidationException.class)

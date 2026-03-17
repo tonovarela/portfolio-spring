@@ -2,6 +2,7 @@ package com.portafolio.my_portafolio_backend.rest;
 
 import com.portafolio.my_portafolio_backend.model.PersonalInfo;
 import com.portafolio.my_portafolio_backend.service.IPersonalInfoService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,23 +24,24 @@ public class PersonalInfoController {
     @GetMapping("/id/{id}")
     public PersonalInfo getPersonalInfoById(@PathVariable Long id) {
         Optional<PersonalInfo> personalInfoOptional = personalInfoService.findById(id);
-        if (personalInfoOptional.isPresent()){
+        if (personalInfoOptional.isPresent()) {
             return personalInfoOptional.get();
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "PersonalInfo not found with id: " + id);
         }
     }
+
     @GetMapping("/all")
     public List<PersonalInfo> getAllPersonalInfo() {
         return personalInfoService.findAll();
     }
 
 
-
     @PostMapping
-    public ResponseEntity<PersonalInfo> createPersonal(@RequestBody PersonalInfo personalInfo){
-        PersonalInfo newPersonalInfo =personalInfoService.save(personalInfo);
+    public ResponseEntity<PersonalInfo> createPersonal(@Valid @RequestBody PersonalInfo personalInfo) {
+        PersonalInfo newPersonalInfo = personalInfoService.save(personalInfo);
         return new ResponseEntity<>(newPersonalInfo, HttpStatus.OK);
+
     }
 
     @DeleteMapping("/id/{id}")

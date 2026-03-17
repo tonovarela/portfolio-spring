@@ -9,7 +9,7 @@
 <h1>¡Ups! Algo salió mal.</h1>
 <p th:text="${message}"></p>
 <ul>
-    <li th:each="error: ${errors}" th:text="${error.defaultMessage}"></li>
+    <li th:each="error: ${errors}" th:text="${error}"></li>
 </ul>
 <a href="/form">Volver al Inicio</a>
 </body>
