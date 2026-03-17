@@ -10,6 +10,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.URL;
 
 @Data
 @NoArgsConstructor
@@ -41,7 +42,10 @@ public class PersonalInfo {
    @NotBlank(message = "Phone number is required")
     private String phone;
    @NotBlank(message = "linkedin  url is required")
+   @URL(message = "LinkedIn URL should be valid")
     private String linkedinUrl;
+
+    @URL(message = "github url should be valid")
     @NotBlank(message = "github url is required")
     private String githubUrl;
 }

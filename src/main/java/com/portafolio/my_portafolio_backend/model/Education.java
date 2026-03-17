@@ -1,5 +1,8 @@
 package com.portafolio.my_portafolio_backend.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +14,20 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Education {
     private Long id;
+    @NotBlank(message = "Degree is required")
     private String degree;
+    @NotBlank(message = "Institution is required")
     private String institution;
+
+
+    @NotNull(message = "Start date is required")
+    @PastOrPresent(message = "Start date must be in the past or present")
     private LocalDate startDate;
+
+    @PastOrPresent(message = "End date must be in the past or present")
     private LocalDate endDate;
+
+    @NotBlank(message = "Description is required")
     private String description;
     private Long personalInfoId;
 
