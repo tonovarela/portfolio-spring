@@ -1,7 +1,6 @@
-package com.portafolio.my_portafolio_backend.rest;
+package com.portafolio.my_portafolio_backend.api;
 
 import com.portafolio.my_portafolio_backend.model.Experience;
-import com.portafolio.my_portafolio_backend.model.PersonalInfo;
 import com.portafolio.my_portafolio_backend.service.IExperienceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

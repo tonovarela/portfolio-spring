@@ -1,4 +1,4 @@
-package com.portafolio.my_portafolio_backend.rest;
+package com.portafolio.my_portafolio_backend.api;
 
 import com.portafolio.my_portafolio_backend.model.Education;
 import com.portafolio.my_portafolio_backend.service.IEducationService;
