@@ -3,9 +3,9 @@
 
     <h2> My Skills</h2>
     <div class="skills-grid">
-        <div class="skill-card">
-            <img src="img/logo/html-5.png" alt="HTML5 Icon" >
-            <h3>HTML5</h3>
+        <div class="skill-card"  th:each="skill : ${skillsList}">
+            <img th:src="${skill.iconClass}" th:alt="${skill.name}" >
+            <h3 th:text="${skill.name}"></h3>
         </div>
     </div>
 

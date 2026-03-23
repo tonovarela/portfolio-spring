@@ -1,0 +1,11 @@
+<section id="education"  xmlns:th="http://www.thymeleaf.org"  th:fragment="education" >
+    <h2>MY EDUCATION</h2>
+    <div class="education-timeline">
+
+        <div class="timeline-item" th:each="edu : ${educationList}">
+            <h3 th:text="${edu.degree} + ' - ' + ${edu.institution}  "></h3>
+            <p class="timeline-date" th:text="${edu.startDate} + ' - ' + ${edu.endDate} "></p>
+            <p th:text="${edu.description}"></p>
+        </div>
+    </div>
+</section>

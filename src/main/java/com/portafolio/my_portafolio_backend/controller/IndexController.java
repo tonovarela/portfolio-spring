@@ -22,9 +22,9 @@ public class IndexController {
       @GetMapping("/")
     public String showIndex(Model model){
           model.addAttribute("personalInfo", personalInfoService.findAll());
-          model.addAttribute("education", educationService.findAll());
-          model.addAttribute("skills", skillService.findAll());
-          model.addAttribute("experience", experienceService.findAll());
+          model.addAttribute("educationList", educationService.findAll());
+          model.addAttribute("skillsList", skillService.findAll());
+          model.addAttribute("experienceList", experienceService.findAll());
 
           System.out.println("IndexController: showIndex() called");
       return "index";

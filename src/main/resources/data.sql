@@ -2,13 +2,13 @@ INSERT INTO personal_info (first_name, last_name, title, profile_description, pr
 ('Juan', 'Perez', 'Full Stack Developer', 'Apasionado por el desarrollo web con experiencia en Java, Spring Boot y React. Disfruto construyendo soluciones robustas y escalables.', 'img/profile-placeholder.jpg', 5, 'juan.perez@example.com', '+5491112345678', 'https://linkedin.com/in/juanperez', 'https://github.com/juanperez');
 
 INSERT INTO skills (name, level_percentage, icon_class, personal_info_id) VALUES
-('Java', 90, 'fab fa-java', 1),
-('Spring Boot', 85, 'fas fa-leaf', 1),
-('PostgreSQL', 80, 'fas fa-database', 1),
-('HTML', 95, 'fab fa-html5', 1),
-('CSS', 90, 'fab fa-css3-alt', 1),
-('JavaScript', 75, 'fab fa-js-square', 1),
-('React', 70, 'fab fa-react', 1);
+('Java', 90, 'img/logos/java.png', 1),
+('Spring Boot', 85, 'img/logos/java.png', 1),
+('PostgreSQL', 80, 'img/logos/servidor-sql.png', 1),
+('HTML', 95, 'img/logos/html-5.png', 1),
+('CSS', 90, 'img/logos/css-3.png', 1),
+('JavaScript', 75, 'img/logos/js.png', 1),
+('React', 70, 'img/logos/js.png', 1);
 
 INSERT INTO educations (degree, institution, start_date, end_date, description, personal_info_id) VALUES
 ('Ingeniería en Sistemas', 'Universidad XYZ', '2015-03-01', '2020-12-15', 'Especialización en desarrollo de software y bases de datos.', 1),

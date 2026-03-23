@@ -1,0 +1,11 @@
+<section id="experience"  xmlns:th="http://www.thymeleaf.org"  th:fragment="experience">
+    <h2>MY EXPERIENCE</h2>
+    <div class="experience-timeline">
+        <div class="timeline-item" th:each="exp : ${experienceList}">
+            <h3 th:text="${exp.jobTitle} + '_' +${exp.companyName} "></h3>
+            <p class="timeline-date"  th:text="${exp.startDate} + ' - ' + ${exp.endDate} "></p>
+            <p th:text="${exp.description}"></p>
+        </div>
+
+    </div>
+</section>
