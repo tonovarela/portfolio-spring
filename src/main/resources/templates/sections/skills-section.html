@@ -1,7 +1,7 @@
 
 <section xmlns:th="http://www.thymeleaf.org"  th:fragment="skills" >
 
-    <h2> My Skills</h2>
+    <h2> MY SKILLS</h2>
     <div class="skills-grid">
         <div class="skill-card"  th:each="skill : ${skillsList}">
             <img th:src="${skill.iconClass}" th:alt="${skill.name}" >

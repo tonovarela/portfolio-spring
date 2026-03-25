@@ -21,7 +21,7 @@ public class IndexController {
 
       @GetMapping("/")
     public String showIndex(Model model){
-          model.addAttribute("personalInfo", personalInfoService.findAll());
+          model.addAttribute("personalInfo", personalInfoService.findAll().getFirst());
           model.addAttribute("educationList", educationService.findAll());
           model.addAttribute("skillsList", skillService.findAll());
           model.addAttribute("experienceList", experienceService.findAll());
