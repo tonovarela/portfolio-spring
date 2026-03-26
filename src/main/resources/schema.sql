@@ -1,10 +1,11 @@
 DROP TABLE IF EXISTS experiences;
 DROP TABLE IF EXISTS educations;
 DROP TABLE IF EXISTS skills;
+DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS personal_info;
 
 CREATE TABLE personal_info (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     title VARCHAR(255) NOT NULL,
@@ -55,4 +56,16 @@ CREATE TABLE experiences (
         FOREIGN KEY (personal_info_id)
         REFERENCES personal_info (id)
         ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE projects (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(500),
+    project_url VARCHAR(500),
+    personal_info_id BIGINT NOT NULL,
+    FOREIGN KEY (personal_info_id) REFERENCES personal_info(id) ON DELETE CASCADE
 );
