@@ -1,7 +1,8 @@
-package com.portafolio.my_portafolio_backend.repository;
+package com.portafolio.my_portafolio_backend.repository.implementation;
 
 
 import com.portafolio.my_portafolio_backend.model.Skill;
+import com.portafolio.my_portafolio_backend.repository.interfaces.ISkillRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Repository
-public class SkillRepository  implements  ISkillRepository{
+public class SkillRepository  implements ISkillRepository {
    private  final JdbcTemplate jdbcTemplate;
    private final RowMapper<Skill> skillRowMapper = (rs, rowNum) -> {;
         Skill skill = new Skill();

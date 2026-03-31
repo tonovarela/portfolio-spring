@@ -2,7 +2,7 @@ package com.portafolio.my_portafolio_backend.service;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.model.Education;
-import com.portafolio.my_portafolio_backend.repository.IEducationRepository;
+import com.portafolio.my_portafolio_backend.repository.interfaces.IEducationRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 import org.springframework.stereotype.Service;

@@ -25,13 +25,15 @@ public class FileStorageService  {
         if (fileName == null) {
             return Optional.empty();
         }
-        String extension = fileName.substring(fileName.lastIndexOf("."));
-        if (extension.isEmpty() ){
+        int extensionIndex = fileName.lastIndexOf('.');
+        if (extensionIndex < 0 || extensionIndex == fileName.length() - 1) {
             return Optional.empty();
         }
-        String newFileName = UUID.randomUUID().toString() + "." + extension;
-        Path path = Paths.get(upLoadDir + newFileName).normalize();
+        String extension = fileName.substring(extensionIndex + 1);
+        String newFileName = UUID.randomUUID() + "." + extension;
+        Path path = Paths.get(upLoadDir, newFileName).normalize();
         try {
+            Files.createDirectories(path.getParent());
             Files.copy(file.getInputStream(), path);
         }
         catch (IOException e) {

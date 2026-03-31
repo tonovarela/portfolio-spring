@@ -1,7 +1,7 @@
 package com.portafolio.my_portafolio_backend.service;
 
 import com.portafolio.my_portafolio_backend.model.Project;
-import com.portafolio.my_portafolio_backend.repository.IProjectRepository;
+import com.portafolio.my_portafolio_backend.repository.interfaces.IProjectRepository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

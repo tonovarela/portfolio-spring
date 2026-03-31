@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyectos</title>
+</head>
+<body>
+
+<h2>Proyectos guardados</h2>
+<a th:href="@{/projects/new}">Crear nuevo proyecto</a>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+
+        <th>Project URL</th>
+        <th>Imagen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project: ${projects}">
+        <td th:text="${project.title}"></td>
+        <td th:text="${project.description}"></td>
+<!--        <td th:text="${project.imageUrl}"></td>-->
+        <td th:text="${project.projectUrl}"></td>
+        <td>
+            <img th:if="${project.imageUrl != null and !#strings.isEmpty(project.imageUrl)}"
+                 th:src="${#strings.startsWith(project.imageUrl, '/') ? project.imageUrl : '/' + project.imageUrl}"
+                 width="200" alt="Project Image">
+            <span th:if="${project.imageUrl == null or #strings.isEmpty(project.imageUrl)}">Sin imagen</span>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
+

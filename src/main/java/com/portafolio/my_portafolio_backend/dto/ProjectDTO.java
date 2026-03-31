@@ -16,9 +16,9 @@ public class ProjectDTO {
 
     @NotBlank(message = "Description is required")
     private String description;
+    private String imageUrl;
 
-   @URL(message = "Image URL must be a valid URL")
-
+    @URL(message = "Project URL must be a valid URL")
     private String projectUrl;
 
     @NotNull(message = "personalInfoId is required")

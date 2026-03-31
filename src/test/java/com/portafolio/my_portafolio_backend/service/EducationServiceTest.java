@@ -2,7 +2,7 @@ package com.portafolio.my_portafolio_backend.service;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.model.Education;
-import com.portafolio.my_portafolio_backend.repository.IEducationRepository;
+import com.portafolio.my_portafolio_backend.repository.interfaces.IEducationRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -2,7 +2,7 @@ package com.portafolio.my_portafolio_backend.service;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.model.Skill;
-import com.portafolio.my_portafolio_backend.repository.ISkillRepository;
+import com.portafolio.my_portafolio_backend.repository.interfaces.ISkillRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

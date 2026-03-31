@@ -1,6 +1,7 @@
-package com.portafolio.my_portafolio_backend.repository;
+package com.portafolio.my_portafolio_backend.repository.implementation;
 
 
+import com.portafolio.my_portafolio_backend.repository.interfaces.IEducationRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,7 +17,7 @@ import com.portafolio.my_portafolio_backend.model.Education;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EducationRepository  implements  IEducationRepository{
+public class EducationRepository  implements IEducationRepository {
 
 
     private  final JdbcTemplate jdbcTemplate;

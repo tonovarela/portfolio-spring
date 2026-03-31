@@ -1,7 +1,8 @@
-package com.portafolio.my_portafolio_backend.repository;
+package com.portafolio.my_portafolio_backend.repository.implementation;
 
 import com.portafolio.my_portafolio_backend.model.PersonalInfo;
 
+import com.portafolio.my_portafolio_backend.repository.interfaces.IPersonalInfoRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 @Repository
 
-public class PersonalInfoRepository implements  IPersonalInfoRepository  {
+public class PersonalInfoRepository implements IPersonalInfoRepository {
 
   private  final JdbcTemplate jdbcTemplate;
 

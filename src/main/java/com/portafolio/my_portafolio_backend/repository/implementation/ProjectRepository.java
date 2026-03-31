@@ -1,7 +1,8 @@
-package com.portafolio.my_portafolio_backend.repository;
+package com.portafolio.my_portafolio_backend.repository.implementation;
 
 import com.portafolio.my_portafolio_backend.model.Project;
 
+import com.portafolio.my_portafolio_backend.repository.interfaces.IProjectRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -38,13 +39,13 @@ public class ProjectRepository  implements IProjectRepository {
     }
     @Override
     public List<Project> findAll() {
-        String sql ="SELECT * FROM personal_info";
+        String sql ="SELECT * FROM projects";
         return jdbcTemplate.query(sql,projectRowMapper);
     }
 
     @Override
     public Optional<Project> findById(Long id) {
-        String sql ="SELECT * FROM personal_info WHERE id=?";
+        String sql ="SELECT * FROM projects WHERE id=?";
         try {
             return Optional.ofNullable(jdbcTemplate.queryForObject(sql, projectRowMapper, id));
         }

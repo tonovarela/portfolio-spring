@@ -29,8 +29,9 @@ public class ProjectController {
         this.projectService = projectService;
         this.fileStorageService = fileStorageService;
     }
-    @GetMapping("/")
+    @GetMapping
     public String getAll(Model model) {
+        System.out.println("Getting all projects");
         List<ProjectDTO> projects = projectService.findAll()
                 .stream()
                 .map(ProjectMapper::toDTO)
@@ -40,19 +41,29 @@ public class ProjectController {
     }
 
 
+    @GetMapping("/new")
+    public String showForm(Model model) {
+        ProjectDTO projectDTO = new ProjectDTO();
+        projectDTO.setPersonalInfoId(1L);
+        model.addAttribute("projectDTO", projectDTO);
+        return "projects/form";
+    }
+
 
 
     @PostMapping("/save")
-    public String saveProject(@Valid @ModelAttribute("projects") ProjectDTO projectDTO,
-                              @RequestParam("file") MultipartFile file) throws Exception {
-        Optional<String> ImageUrl = fileStorageService.storeFile(file);
-       if  (ImageUrl.isEmpty()) {
-           return "error-page";
-       }
-        ImageUrl.ifPresent(projectDTO::setProjectUrl);
+    public String saveProject(@Valid @ModelAttribute("projectDTO") ProjectDTO projectDTO,
+                              @RequestParam(value = "file", required = false) MultipartFile file) {
+        if (file != null && !file.isEmpty()) {
+            Optional<String> imageUrl = fileStorageService.storeFile(file);
+            if (imageUrl.isEmpty()) {
+                return "error-page";
+            }
+            imageUrl.ifPresent(projectDTO::setImageUrl);
+        }
         Project project = ProjectMapper.toEntity(projectDTO);
         projectService.save(project);
-        return "redirect:/projects/list";
+        return "redirect:/projects";
 
     }
 
