@@ -1,4 +1,4 @@
-package com.portafolio.my_portafolio_backend.service;
+package com.portafolio.my_portafolio_backend.service.interfaces;
 
 
 import com.portafolio.my_portafolio_backend.model.Experience;

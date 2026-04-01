@@ -3,8 +3,8 @@ package com.portafolio.my_portafolio_backend.controller;
 import com.portafolio.my_portafolio_backend.dto.ProjectDTO;
 import com.portafolio.my_portafolio_backend.mappers.ProjectMapper;
 import com.portafolio.my_portafolio_backend.model.Project;
-import com.portafolio.my_portafolio_backend.service.FileStorageService;
-import com.portafolio.my_portafolio_backend.service.IProjectService;
+import com.portafolio.my_portafolio_backend.service.implementation.FileStorageService;
+import com.portafolio.my_portafolio_backend.service.interfaces.IProjectService;
 
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;

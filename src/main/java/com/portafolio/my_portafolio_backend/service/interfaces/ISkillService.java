@@ -1,6 +1,5 @@
-package com.portafolio.my_portafolio_backend.service;
+package com.portafolio.my_portafolio_backend.service.interfaces;
 
-import com.portafolio.my_portafolio_backend.model.PersonalInfo;
 import com.portafolio.my_portafolio_backend.model.Skill;
 
 import java.util.List;

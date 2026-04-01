@@ -1,7 +1,7 @@
 package com.portafolio.my_portafolio_backend.api;
 
 import com.portafolio.my_portafolio_backend.model.PersonalInfo;
-import com.portafolio.my_portafolio_backend.service.IPersonalInfoService;
+import com.portafolio.my_portafolio_backend.service.interfaces.IPersonalInfoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.portafolio.my_portafolio_backend.api;
 
 import com.portafolio.my_portafolio_backend.model.Experience;
-import com.portafolio.my_portafolio_backend.service.IExperienceService;
+import com.portafolio.my_portafolio_backend.service.interfaces.IExperienceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

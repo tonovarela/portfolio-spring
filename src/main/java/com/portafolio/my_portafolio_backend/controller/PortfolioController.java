@@ -2,7 +2,7 @@ package com.portafolio.my_portafolio_backend.controller;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.model.PersonalInfo;
-import com.portafolio.my_portafolio_backend.service.IPersonalInfoService;
+import com.portafolio.my_portafolio_backend.service.interfaces.IPersonalInfoService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

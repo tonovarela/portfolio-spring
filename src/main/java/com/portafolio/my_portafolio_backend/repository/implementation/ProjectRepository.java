@@ -58,7 +58,7 @@ public class ProjectRepository  implements IProjectRepository {
     public Project save(Project project) {
         if (project.getId() ==null){
             KeyHolder keyHolder = new GeneratedKeyHolder();
-            String sql ="InsERT INTO projects (title, description, image_url, project_url, personal_info_id) VALUES (?, ?, ?, ?, ?)";
+            String sql ="INSERT INTO projects (title, description, image_url, project_url, personal_info_id) VALUES (?, ?, ?, ?, ?)";
             jdbcTemplate.update(connection -> {
                 var ps = connection.prepareStatement(sql, new String[]{"id"});
                 ps.setString(1, project.getTitle());

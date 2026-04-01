@@ -1,8 +1,9 @@
-package com.portafolio.my_portafolio_backend.service;
+package com.portafolio.my_portafolio_backend.service.implementation;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.model.Education;
 import com.portafolio.my_portafolio_backend.repository.interfaces.IEducationRepository;
+import com.portafolio.my_portafolio_backend.service.interfaces.IEducationService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class EducationService implements  IEducationService{
+public class EducationService implements IEducationService {
 
     private final IEducationRepository educationRepository;
     private final Validator validator;

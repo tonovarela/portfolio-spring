@@ -1,8 +1,9 @@
-package com.portafolio.my_portafolio_backend.service;
+package com.portafolio.my_portafolio_backend.service.implementation;
 
 import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.model.PersonalInfo;
 import com.portafolio.my_portafolio_backend.repository.interfaces.IPersonalInfoRepository;
+import com.portafolio.my_portafolio_backend.service.interfaces.IPersonalInfoService;
 import org.springframework.stereotype.Service;
 
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PersonalInfoService implements  IPersonalInfoService {
+public class PersonalInfoService implements IPersonalInfoService {
 
     private final IPersonalInfoRepository personalInfoRepository;
     private final Validator validator ;
