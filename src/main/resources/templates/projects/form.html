@@ -3,43 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        input[type="file"]::file-selector-button {
+    background-color: var(--color-primary-gold); /* Dorado */
+    color: var(--color-dark); /* Texto oscuro */
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 1rem;
+    transition: background-color 0.3s ease;
+}
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--color-dark); /* Oscuro al pasar el ratón */
+    color: var(--color-primary-gold); /* Texto dorado al pasar el ratón */
+}
+    </style>
     <title>Formulario</title>
 </head>
 <body>
+<header>
+    <div class="container">
+        <div th:insert="fragments/nav :: nav"></div>
+    </div>
+</header>
+<main>
+    <div class="container">
+    <section id="contact" style="height: 80vh;">
+        <h2>Formulario de proyecto</h2>
+        <form class="contact-form" th:action="@{/projects/save}" th:object="${projectDTO}" method="post" enctype="multipart/form-data">
+
+            <input id="title" placeholder="titulo" type="text" th:field="*{title}"><br><br>
 
 
-<!--private Long id;-->
-<!--private String title;-->
-<!--private String description;-->
-<!--private String imageUrl;-->
-<!--private String projectUrl;-->
-<!--private Long personalInfoId;-->
+            <input id="description" placeholder="description" type="text" th:field="*{description}"><br><br>
 
 
-<h1>Formulario de informacion personal</h1>
-<form th:action="@{/projects/save}" th:object="${projectDTO}" method="post" enctype="multipart/form-data">
-    <label for="title">Title:</label><br>
-    <input id="title" type="text" th:field="*{title}"><br><br>
-
-    <label for="description">Description:</label><br>
-    <input id="description" type="text" th:field="*{description}"><br><br>
-
-    <label for="projectUrl">Project URL:</label><br>
-    <input id="projectUrl" type="url" th:field="*{projectUrl}"><br><br>
-
-    <label for="personalInfoId">Personal Info ID:</label><br>
-    <input id="personalInfoId" type="number" min="1" th:field="*{personalInfoId}"><br><br>
-
-    <label for="file">Imagen:</label><br>
-    <input id="file" name="file" type="file" accept="image/*"><br><br>
+            <input id="projectUrl" type="text" placeholder="Project URL" th:field="*{projectUrl}"><br><br>
 
 
+            <input id="personalInfoId" type="number" min="1" th:field="*{personalInfoId}"><br><br>
+
+            <input id="file" name="file" type="file" accept="image/*"><br><br>
 
 
+            <button type="submit">Enviar</button>
 
+        </form>
 
-    <button type="submit">Enviar</button>
-</form>
+    </section>
+    </div>
+</main>
+<div th:insert="fragments/footer :: footer"></div>
 
 </body>
 </html>
