@@ -2,11 +2,16 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        .error-message {
+        color: red;
+        }
+
+
         input[type="file"]::file-selector-button {
     background-color: var(--color-primary-gold); /* Dorado */
     color: var(--color-dark); /* Texto oscuro */
@@ -37,16 +42,22 @@ input[type="file"]::file-selector-button:hover {
         <h2>Formulario de proyecto</h2>
         <form class="contact-form" th:action="@{/projects/save}" th:object="${projectDTO}" method="post" enctype="multipart/form-data">
 
-            <input id="title" placeholder="titulo" type="text" th:field="*{title}"><br><br>
+            <input id="Title" placeholder="Title" type="text" th:field="*{title}"><br><br>
+            <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-message"></div>
 
 
-            <input id="description" placeholder="description" type="text" th:field="*{description}"><br><br>
+            <textarea id="description" rows="5" placeholder="Description" th:field="*{description}">
+                </textarea>
+                <br><br>
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error-message"></div>
 
 
             <input id="projectUrl" type="text" placeholder="Project URL" th:field="*{projectUrl}"><br><br>
+            <div th:if="${#fields.hasErrors('projectUrl')}" th:errors="*{projectUrl}" class="error-message"></div>
 
 
             <input id="personalInfoId" type="number" min="1" th:field="*{personalInfoId}"><br><br>
+
 
             <input id="file" name="file" type="file" accept="image/*"><br><br>
 
