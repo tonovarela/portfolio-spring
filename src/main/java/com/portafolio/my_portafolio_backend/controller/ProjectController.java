@@ -1,6 +1,7 @@
 package com.portafolio.my_portafolio_backend.controller;
 
 import com.portafolio.my_portafolio_backend.dto.ProjectDTO;
+import com.portafolio.my_portafolio_backend.exception.ValidationException;
 import com.portafolio.my_portafolio_backend.mappers.ProjectMapper;
 import com.portafolio.my_portafolio_backend.model.Project;
 import com.portafolio.my_portafolio_backend.service.implementation.FileStorageService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,23 +58,36 @@ public class ProjectController {
     public String saveProject(@Valid @ModelAttribute("projectDTO") ProjectDTO projectDTO,
                               BindingResult result,
                               @RequestParam(value = "file", required = false) MultipartFile file) {
-        if (file.isEmpty()){
-            result.rejectValue("imageUrl", "error.required", "Please select an image url");
-        }
-        if (result.hasErrors()){
-            return "projects/form";
-        }
-        //if (file != null && !file.isEmpty()) {
+
+        try {
+
+            if (file == null || file.isEmpty()) {
+                result.rejectValue("imageUrl", "error.required", "Please select an image url");
+            }
+
+            if (result.hasErrors()) {
+                return "projects/form";
+            }
+
             Optional<String> imageUrl = fileStorageService.storeFile(file);
             if (imageUrl.isEmpty()) {
-                return "error-page";
+                return "redirect:/projects/error-page";
             }
-            imageUrl.ifPresent(projectDTO::setImageUrl);
-        //}
-        Project project = ProjectMapper.toEntity(projectDTO);
-        projectService.save(project);
-        return "redirect:/projects";
 
+            imageUrl.ifPresent(projectDTO::setImageUrl);
+            Project project = ProjectMapper.toEntity(projectDTO);
+            projectService.save(project);
+
+            return "redirect:/projects";
+        } catch (Exception e) {
+            return "redirect:/projects/error-page";
+        }
+
+    }
+
+    @GetMapping("/error-page")
+    public String showErrorPage() {
+        return "error-page";
     }
 
 

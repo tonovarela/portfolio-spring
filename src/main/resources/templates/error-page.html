@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Error</title>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div th:insert="fragments/nav :: nav"></div>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <section class="error-page">
+            <h2>Lo sentimos ha ocurrido un error.</h2>
+            <p>No pudimos procesar tu solicitud en este momento, Por favor intentalo de nuevo mas tarde</p>
+            <a th:href="@{/projects}">Volver a proyectos</a>
+        </section>
+
+</div>
+</main>
+<div th:insert="fragments/footer :: footer"></div>
+
+</body>
+</html>
