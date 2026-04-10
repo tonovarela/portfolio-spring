@@ -9,7 +9,7 @@
     <title>Thymeleaf</title>
 </head>
 <body>
-<header>
+<header class="line-white ">
     <div class="container">
         <div th:insert="fragments/nav :: nav"></div>
         <div th:insert="sections/personalinfo-section :: hero"></div>
@@ -19,13 +19,12 @@
 
 <main>
     <div class="container">
-        <div th:insert="sections/about-section :: about"></div>
-        <div th:insert="sections/education-section :: education"></div>
-        <div th:insert="sections/skills-section :: skills"></div>
-
-        <div th:insert="sections/experience-section :: experience"></div>
-        <div th:insert="sections/projects-section :: projects"></div>
-        <div th:insert="sections/contact-section :: contact"></div>
+        <div class="line-white" th:insert="~{sections/about-section :: about}"></div>
+        <div class="line-white"  th:insert="~{sections/education-section :: education}"></div>
+        <div class="line-white"  th:insert="~{sections/skills-section :: skills}"></div>
+        <div class="line-white"  th:insert="~{sections/experience-section :: experience}"></div>
+        <div class="line-white"  th:insert="~{sections/projects-section :: projects}"></div>
+        <div  th:insert="~{sections/contact-section :: contact}"></div>
 
     </div>
 </main>

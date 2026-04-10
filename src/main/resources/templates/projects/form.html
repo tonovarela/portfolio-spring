@@ -33,7 +33,7 @@ input[type="file"]::file-selector-button:hover {
 <body>
 <header>
     <div class="container">
-        <div th:insert="fragments/nav :: nav"></div>
+        <div th:insert="~{fragments/nav :: nav}"></div>
     </div>
 </header>
 <main>
@@ -69,7 +69,7 @@ input[type="file"]::file-selector-button:hover {
     </section>
     </div>
 </main>
-<div th:insert="fragments/footer :: footer"></div>
+<div th:insert="~{fragments/footer :: footer}"></div>
 
 </body>
 </html>

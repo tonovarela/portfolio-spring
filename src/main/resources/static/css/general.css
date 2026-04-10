@@ -26,14 +26,15 @@ body{
 }
 
 /* Estilos para las secciones principales */
-main section {
-    padding: 40px 0; /* Espaciado interno para las secciones */
-    border-bottom: 1px solid #ddd; /* Separador entre secciones */
+/*main section {
+    padding: 40px 0;
+    border-bottom: 1px solid #ddd;
 }
+*/
 
-main section:last-child {
-    border-bottom: none; /* Quitar el borde de la última sección */
-}
+/*main section:last-child {
+    border-bottom: none;
+}*/
 
 main h2 {
     font-size: 2rem;

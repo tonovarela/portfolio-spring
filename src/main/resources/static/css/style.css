@@ -289,3 +289,10 @@ main .container {
 footer {
     background-color: var(--color-dark);
 }
+
+.line-white {
+
+padding:40px 0;
+border-bottom:1px solid #ddd
+}
+
