@@ -25,25 +25,24 @@ public class SkillController {
     }
 
     @GetMapping
-
     public String list(Model model) {
         List<SkillDTO> skillsDTO = skillService.findAll()
                 .stream()
                 .map(SkillMapper::toDTO)
                 .toList();
         model.addAttribute("skills", skillsDTO);
-        return "/skill/list";
+        return "/skills/list";
     }
 
     @GetMapping("/new")
     public String showForm(Model model) {
         model.addAttribute("skillDTO", new SkillDTO());
-        return "/skill/form";
+        return "/skills/new";
     }
     @PostMapping("/save")
     public String saveSkill(@Valid @ModelAttribute("skillDTo") SkillDTO skillDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/skill/form";
+            return "/skills/new";
         }
         try{
            Skill skill = SkillMapper.toEntity(skillDTO);
@@ -66,7 +65,7 @@ public class SkillController {
       }
        SkillDTO skill = SkillMapper.toDTO(skillOptions.get());
        model.addAttribute("skillDTO", skill);
-       return  "/skill/list";
+       return  "/skills/list";
 
    }
    @GetMapping("/personal/{personalInfoId}")
@@ -77,7 +76,7 @@ public class SkillController {
                 .map(SkillMapper::toDTO)
                 .toList();
         model.addAttribute("skills", skillsDTO);
-        return "/skill/list";
+        return "/skills/list";
    }
 
    @PostMapping ("/delete/{skill}")

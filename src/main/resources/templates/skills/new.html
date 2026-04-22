@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de Habilidad</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+         <div th:insert="~{fragments/nav :: nav}"></div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <section class="admin-section">
+            <div class="admin-actions">
+                <a>Volver a la lista de Habilidades</a>
+                <a>Cerrar Sesión</a>
+            </div>
+            <h2>Formulario de Habilidad</h2>
+
+            <form class="contact-form" method="post">
+                <input type="hidden" />
+
+                <input type="text" placeholder="Nombre de la habilidad" required>
+                <div class="error-message"></div>
+
+                <input type="number" placeholder="Porcentaje (0-100)" required min="0" max="100">
+                <div class="error-message"></div>
+
+                <input type="text" placeholder="Clase del ícono (ej. fas fa-code)" required>
+                <div class="error-message"></div>
+
+                <input type="number" placeholder="ID Información Personal" required>
+                <div class="error-message"></div>
+
+                <button type="submit" class="btn">Guardar Habilidad</button>
+            </form>
+        </section>
+    </div>
+</main>
+
+<div></div>
+</body>
+</html>

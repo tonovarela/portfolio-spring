@@ -20,7 +20,7 @@
         <section class="admin-section">
             <div class="admin-actions">
                 <a>Crear Nueva Habilidad</a>
-                <a>Cerrar Sesión</a>
+                <a th:href="@{/logout}">Cerrar Sesión</a>
             </div>
             <h2>Lista de Habilidades</h2>
 
@@ -45,11 +45,11 @@
                 <tbody>
                 <tr th:each="skill : ${skills}">
 
-                    <td th:text="skill.id"></td>
-                    <td th:text="skill.name"></td>
-                    <td th:text="skill.levelPercentage"></td>
-                    <td th:text="skill.iconClass"></td>
-                    <td th:text="skill.personalInfoId"></td>
+                    <td th:text="${skill.id}"></td>
+                    <td th:text="${skill.name}"></td>
+                    <td th:text="${skill.levelPercentage}"></td>
+                    <td th:text="${skill.iconClass}"></td>
+                    <td th:text="${skill.personalInfoId}"></td>
                     <td>
                         <a th:href="@{/skills/edit/{id}(id=${skill.id}) }" class="btn-edit">Editar</a>
                         <form th:action="@{/skills/delete/{id}(id=${skill.id}) }"  style="display:inline;">
